@@ -30,7 +30,7 @@ body {
 }
 
 #button_container {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 200%;
     text-align: center;
     width: 100%;
@@ -74,7 +74,7 @@ body {
 }
 
 .mod_text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 225%;
     display: inline-block;
     translate: 10px -6px;
@@ -98,7 +98,7 @@ body {
 }
 
 #answer {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 250%;
     text-align: center;
     background-color: #f8d9aa;
@@ -114,7 +114,7 @@ body {
 }
 
 #feedback {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 250%;
     text-align: center;
     left: 50%;
@@ -133,7 +133,7 @@ body {
 }
 
 .consonant {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 250%;
     text-align: center;
     background-color: #f8ce90;
@@ -156,7 +156,7 @@ body {
 }
 
 .vowel {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 250%;
     text-align: center;
     background-color: #f8ce90;
@@ -180,7 +180,7 @@ body {
 }
 
 .words_button {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 225%;
     text-align: center;
     background-color: #f8ce90;
@@ -194,7 +194,7 @@ body {
 }
 
 #finish {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 225%;
     text-align: center;
     background-color: #f8ce90;
@@ -214,7 +214,7 @@ body {
 }
 
 #correct {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 250%;
     text-align: center;
     left: 50%;
@@ -224,7 +224,7 @@ body {
 }
 
 #return_menu {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Comic Sans MS", cursive;
     font-size: 250%;
     text-align: center;
     background-color: #f8ce90;
