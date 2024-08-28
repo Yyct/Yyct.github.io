@@ -1,0 +1,247 @@
+body {
+    background-color: #faecbd;
+    user-select: none;
+    overflow: hidden;
+}
+
+#wrapper {
+    height: 60%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    translate: 0 -50%;
+}
+
+#menu {
+    display: block;
+}
+
+#title {
+    width: 450px;
+    font-family: cursive;
+    font-size: 300%;
+    text-align: center;
+    background-color: #f7d89e;
+    border: solid 3px #c4a05d;
+    border-radius: 25px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#button_container {
+    font-family: cursive;
+    font-size: 200%;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+#button_container .button {
+    width: 200px;
+    background-color: #f7d89e;
+    border: solid 3px #c4a05d;
+    border-radius: 15px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+#mod_container {
+    bottom: 0;
+    position: absolute;
+    left: 50%;
+    translate: -48.5% 0;
+    white-space: nowrap;
+    bottom: 10%;
+}
+
+.mod_button_container {
+    text-align: center;
+    width: 270px;
+    display: inline-block;
+    margin: 0 100px;
+}
+
+.checkbox {
+    width: 35px;
+    height: 35px;
+    background-color: #f7d89e;
+    border: solid 3px #c4a05d;
+    display: inline-block;
+}
+
+.mod_text {
+    font-family: cursive;
+    font-size: 225%;
+    display: inline-block;
+    translate: 10px -6px;
+}
+
+#game {
+    display: none;
+}
+
+#word {
+    font-size: 300%;
+    text-align: center;
+    background-color: #fcf8f2;
+    border: solid 3px #c4a05d;
+    border-radius: 15px;
+    padding: 10px 30px;
+    margin-left: 50%;
+    translate: -50% 0;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#answer {
+    font-family: cursive;
+    font-size: 250%;
+    text-align: center;
+    background-color: #f8d9aa;
+    border: solid 3px #d1ae6e;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 10px 30px;
+    left: 50%;
+    top: 35%;
+    translate: -50% -50%;
+    position: absolute;
+    white-space: nowrap;
+}
+
+#feedback {
+    font-family: cursive;
+    font-size: 250%;
+    text-align: center;
+    left: 50%;
+    top: 55%;
+    translate: -50% -50%;
+    position: absolute;
+}
+
+#consonant_container {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 106px;
+    translate: -50% 0;
+    white-space: nowrap;
+}
+
+.consonant {
+    font-family: cursive;
+    font-size: 250%;
+    text-align: center;
+    background-color: #f8ce90;
+    border: solid 3px #c4a05d;
+    border-radius: 15px;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    padding: 5px;
+    margin: 0 15px;
+}
+
+#vowel_container {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    translate: -50% 0;
+    white-space: nowrap;
+}
+
+.vowel {
+    font-family: cursive;
+    font-size: 250%;
+    text-align: center;
+    background-color: #f8ce90;
+    border: solid 3px #c4a05d;
+    border-radius: 15px;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    padding: 5px;
+    margin: 0 15px;
+}
+
+#words_button_container {
+    display: inline-block;
+    bottom: 0;
+    position: absolute;
+    left: 50%;
+    translate: -50% 0;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.words_button {
+    font-family: cursive;
+    font-size: 225%;
+    text-align: center;
+    background-color: #f8ce90;
+    border: solid 3px #c4a05d;
+    border-radius: 15px;
+    width: 160px;
+    display: inline-block;
+    padding: 10px;
+    margin: 0 400px;
+    pointer-events: all;
+}
+
+#finish {
+    font-family: cursive;
+    font-size: 225%;
+    text-align: center;
+    background-color: #f8ce90;
+    border: solid 3px #c4a05d;
+    border-radius: 15px;
+    width: 160px;
+    padding: 10px;
+    bottom: 10%;
+    left: 50%;
+    translate: -50% 0;
+    position: absolute;
+    display: none;
+}
+
+#result {
+    display: none;
+}
+
+#correct {
+    font-family: cursive;
+    font-size: 250%;
+    text-align: center;
+    left: 50%;
+    top: 40%;
+    translate: -50% -50%;
+    position: absolute;
+}
+
+#return_menu {
+    font-family: cursive;
+    font-size: 250%;
+    text-align: center;
+    background-color: #f8ce90;
+    border: solid 3px #c4a05d;
+    border-radius: 15px;
+    width: 150px;
+    left: 50%;
+    top: 60%;
+    translate: -50% -50%;
+    padding: 10px;
+    position: absolute;
+}
+
+.button:hover, .checkbox:hover, .consonant:hover, .vowel:hover, .words_button:hover, #finish:hover, #return_menu:hover {
+    filter: brightness(1.05);
+}
+
+.button:active, .checkbox:active, .consonant:active, .vowel:active, .words_button:active, #finish:active, #return_menu:active {
+    filter: brightness(0.98);
+}

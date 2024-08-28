@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japen</title>
+
+    <!-- Imports External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="menu">
+            <div id="title">Japen Simulator</div>
+            <div id="button_container">
+                <div id="hiragana" class="button" onclick="start(0)">Hiragana</div>
+                <div id="katakana" class="button" onclick="start(1)">Katakana</div>
+                <div id="mixed" class="button" onclick="start(2)">Mixed</div>
+            </div>
+            <div id="mod_container">
+                <div class="mod_button_container">
+                    <div id="hard_button" class="checkbox" onclick="toggleMode(0)"></div>
+                    <div class="mod_text">Hard</div>
+                </div>
+                <div class="mod_button_container">
+                    <div id="sentence_button" class="checkbox" onclick="toggleMode(1)"></div>
+                    <div class="mod_text">Sentence</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="game">
+            <div id="word"></div>
+
+            <div>
+                <div id="answer"></div>
+            </div>
+
+            <div id="feedback"></div>
+
+            <div id="consonant_container">
+                <div class="consonant" onclick="enterLetter('k')">k</div>
+                <div class="consonant" onclick="enterLetter('s')">s</div>
+                <div class="consonant" onclick="enterLetter('t')">t</div>
+                <div class="consonant" onclick="enterLetter('n')">n</div>
+                <div class="consonant" onclick="enterLetter('h')">h</div>
+                <div class="consonant" onclick="enterLetter('m')">m</div>
+                <div class="consonant" onclick="enterLetter('y')">y</div>
+                <div class="consonant" onclick="enterLetter('r')">r</div>
+                <div class="consonant" onclick="enterLetter('w')">w</div>
+            </div>
+
+            <div id="vowel_container">
+                <div class="vowel" onclick="enterLetter('c')">c</div>
+                <div class="vowel" onclick="enterLetter('a')">a</div>
+                <div class="vowel" onclick="enterLetter('i')">i</div>
+                <div class="vowel" onclick="enterLetter('u')">u</div>
+                <div class="vowel" onclick="enterLetter('e')">e</div>
+                <div class="vowel" onclick="enterLetter('o')">o</div>
+                <div class="vowel" onclick="enterLetter('f')">f</div>
+            </div>
+
+            <div id="words_button_container">
+                <div class="words_button" id="clear" onclick="enterLetter('-')">Delete</div>
+                <div class="words_button" id="submit" onclick="submitAnswer()">Submit</div>
+            </div>
+
+            <div id="finish" onclick="result()">Finish</div>
+        </div>
+
+        <div id="result">
+            <div id="correct">Correct: </div>
+            <div id="return_menu" onclick="returnMenu()">Menu</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMode(mode) {
+            if (mode == 0) {
+                if (hard) {
+                    document.getElementById("hard_button").style.backgroundColor = "#f7d89e";
+                    hard = false;
+                }
+
+                else {
+                    document.getElementById("hard_button").style.backgroundColor = "#d8bb81";
+                    hard = true;
+                }
+            }
+
+            else if (mode == 1) {
+                if (sentence) {
+                    document.getElementById("sentence_button").style.backgroundColor = "#f7d89e";
+                    sentence = false;
+                }
+
+                else {
+                    document.getElementById("sentence_button").style.backgroundColor = "#d8bb81";
+                    sentence = true;
+                }
+            }
+        }
+        function start(mode) {
+            document.getElementById("menu").style.display = "none";
+            document.getElementById("game").style.display = "block";
+            document.getElementById("feedback").innerHTML = ""
+
+            document.getElementById("consonant_container").style.display = 'block'
+            document.getElementById("vowel_container").style.display = 'block'
+            document.getElementById("words_button_container").style.display = 'block'
+            document.getElementById("finish").style.display = 'none'
+
+            if (mode == 0) {
+                question_list = JSON.parse(JSON.stringify(hiragana))
+            }
+
+            else if (mode == 1) {
+                question_list = JSON.parse(JSON.stringify(katakana))
+            }
+
+            else if (mode == 2) {
+                question_list = JSON.parse(JSON.stringify([hiragana[0].concat(katakana[0]),hiragana[1].concat(katakana[1])]))
+            }
+
+            if (hard) {
+                question_list = JSON.parse(JSON.stringify([question_list[0].concat(question_list[0]),question_list[1].concat(question_list[1])]))
+            }
+
+            question_amount = 0
+            correct = 0
+
+            clearAnswer()
+            generateQuestion()
+        }
+
+        function generateQuestion() {
+            let count;
+
+            if (sentence) {
+                count = Math.floor(Math.random() * 4) + 4
+                if (question_list[0].length <= 12 && question_list[0].length > 6) {count = Math.floor(question_list[0].length / 2)}
+                else if (question_list[0].length <= 12) {count = question_list[0].length}
+            }
+
+            else {count = 1}
+
+            word = ''
+            question = ''
+
+            for (i = count; i > 0; i--) {
+                question_num = Math.floor(Math.random() * (question_list[0].length))
+                word += question_list[0][question_num]
+                question += question_list[1][question_num]
+                question_list[0].splice(question_num, 1)
+                question_list[1].splice(question_num, 1)
+            }
+
+            document.getElementById("word").innerHTML = word
+        }
+
+        function enterLetter(letter) {
+            document.getElementById("feedback").innerHTML = ""
+
+            if (document.getElementById("answer").style.color == "rgb(170, 170, 170)") {
+                clearAnswer()
+            }
+
+            if (letter == '-') {
+                document.getElementById("answer").innerHTML = document.getElementById("answer").innerHTML.slice(0, document.getElementById("answer").innerHTML.length - 1);
+
+                if (document.getElementById("answer").innerHTML.length == 0) {
+                    clearAnswer()
+                }
+            }
+
+            else {
+                document.getElementById("answer").style.width = 'auto';
+                document.getElementById("answer").style.height = 'auto';
+                document.getElementById("answer").innerHTML += letter;
+            }
+        }
+
+        function clearAnswer() {
+            document.getElementById("answer").style.width = '20px';
+            document.getElementById("answer").style.height = '56px';
+            document.getElementById("answer").innerHTML = '';
+            document.getElementById("answer").style.color = "#000000"
+        }
+
+        function submitAnswer() {
+            question_amount += 1
+
+            if (document.getElementById("answer").style.color == "rgb(170, 170, 170)") {
+                clearAnswer()
+            }
+
+            if (document.getElementById("answer").innerHTML == question) {
+                document.getElementById("feedback").innerHTML = "Correct!";
+                correct += 1
+            }
+            
+            else {
+                document.getElementById("feedback").innerHTML = "Wrong! (" + question + ")";
+            }
+
+            if (question_list[0].length == 0) {
+                end()
+            }
+
+            else {
+                generateQuestion()
+                document.getElementById("answer").style.color = "#aaaaaa"
+            }
+        }
+
+        function end() {
+            document.getElementById("consonant_container").style.display = 'none'
+            document.getElementById("vowel_container").style.display = 'none'
+            document.getElementById("words_button_container").style.display = 'none'
+            document.getElementById("finish").style.display = 'block'
+        }
+
+        function result() {
+            document.getElementById("game").style.display = "none"
+            document.getElementById("result").style.display = "block"
+
+            document.getElementById("correct").innerHTML = "Correct: " + correct + " / " + question_amount
+        }
+
+        function returnMenu() {
+            document.getElementById("result").style.display = "none"
+            document.getElementById("menu").style.display = "block"   
+        }
+
+        const
+        hiragana = [[
+            'あ','い','う','え','お',
+            'か','き','く','け','こ',
+            'さ','し','す','せ','そ',
+            'た','ち','つ','て','と',
+            'な','に','ぬ','ね','の',
+            'は','ひ','ふ','へ','ほ',
+            'ま','み','む','め','も',
+            'や','ゆ','よ',
+            'ら','り','る','れ','ろ',
+            'わ','を',
+            'ん'
+        ],[
+            'a','i','u','e','o',
+            'ka','ki','ku','ke','ko',
+            'sa','shi','su','se','so',
+            'ta','chi','tsu','te','to',
+            'na','ni','nu','ne','no',
+            'ha','hi','fu','he','ho',
+            'ma','mi','mu','me','mo',
+            'ya','yu','yo',
+            'ra','ri','ru','re','ro',
+            'wa','wo',
+            'n'
+        ]],
+
+        katakana = [[
+            'ア','イ','ウ','エ','オ',
+            'カ','キ','ク','ケ','コ',
+            'サ','シ','ス','セ','ソ',
+            'タ','チ','ツ','テ','ト',
+            'ナ','ニ','ヌ','ネ','ノ',
+            'ハ','ヒ','フ','ヘ','ホ',
+            'マ','ミ','ム','メ','モ',
+            'ヤ','ユ','ヨ',
+            'ラ','リ','ル','レ','ロ	',
+            'ワ','ヲ',
+            'ン'
+        ],[
+            'a','i','u','e','o',
+            'ka','ki','ku','ke','ko',
+            'sa','shi','su','se','so',
+            'ta','chi','tsu','te','to',
+            'na','ni','nu','ne','no',
+            'ha','hi','fu','he','ho',
+            'ma','mi','mu','me','mo',
+            'ya','yu','yo',
+            'ra','ri','ru','re','ro',
+            'wa','wo',
+            'n'
+        ]];
+
+        let
+        hard = false,
+        sentence = false,
+        question_list,
+        word,
+        question,
+        correct;
+    </script>
+</body>
+</html>
