@@ -169,16 +169,6 @@ body {
     margin: 0 15px;
 }
 
-#words_button_container {
-    display: inline-block;
-    bottom: 0;
-    position: absolute;
-    left: 50%;
-    translate: -50% 0;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
 .words_button {
     font-family: "Comic Sans MS", cursive;
     font-size: 225%;
@@ -189,7 +179,7 @@ body {
     width: 160px;
     display: inline-block;
     padding: 10px;
-    margin: 0 400px;
+    margin: 0 15px;
     pointer-events: all;
 }
 

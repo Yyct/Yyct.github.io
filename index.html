@@ -51,6 +51,7 @@
             </div>
 
             <div id="vowel_container">
+                <div class="words_button" id="clear" onclick="enterLetter('-')">Delete</div>
                 <div class="vowel" onclick="enterLetter('c')">c</div>
                 <div class="vowel" onclick="enterLetter('a')">a</div>
                 <div class="vowel" onclick="enterLetter('i')">i</div>
@@ -58,10 +59,6 @@
                 <div class="vowel" onclick="enterLetter('e')">e</div>
                 <div class="vowel" onclick="enterLetter('o')">o</div>
                 <div class="vowel" onclick="enterLetter('f')">f</div>
-            </div>
-
-            <div id="words_button_container">
-                <div class="words_button" id="clear" onclick="enterLetter('-')">Delete</div>
                 <div class="words_button" id="submit" onclick="submitAnswer()">Submit</div>
             </div>
 
@@ -107,7 +104,6 @@
 
             document.getElementById("consonant_container").style.display = 'block'
             document.getElementById("vowel_container").style.display = 'block'
-            document.getElementById("words_button_container").style.display = 'block'
             document.getElementById("finish").style.display = 'none'
 
             if (mode == 0) {
@@ -216,7 +212,6 @@
         function end() {
             document.getElementById("consonant_container").style.display = 'none'
             document.getElementById("vowel_container").style.display = 'none'
-            document.getElementById("words_button_container").style.display = 'none'
             document.getElementById("finish").style.display = 'block'
         }
 
